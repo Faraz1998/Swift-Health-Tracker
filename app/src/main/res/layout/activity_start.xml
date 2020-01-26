@@ -11,7 +11,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="108dp"
         android:text="Swift Health Tracker"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
