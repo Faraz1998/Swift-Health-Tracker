@@ -77,11 +77,8 @@ public class Home extends AppCompatActivity {
                     }
                     else if(vp.getCurrentItem() == 2){
                         vp.setCurrentItem(3);}
-                    else {
-                        vp.setCurrentItem(0);
-                    }
+                    else if(vp.getCurrentItem() == 3)
+                    { vp.setCurrentItem(1); }
                 }
             });
-        }
-    }
-}
+        }}}

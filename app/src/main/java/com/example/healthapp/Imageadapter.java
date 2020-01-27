@@ -4,15 +4,11 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ViewFlipper;
-
 import androidx.viewpager.widget.PagerAdapter;
-
-
 
 public class Imageadapter extends PagerAdapter {
     private Context mContext;
-    private int[] mImageIds = new int[]{R.drawable.note, R.drawable.health, R.drawable.three};
+    private int[] mImageIds = new int[]{R.drawable.one, R.drawable.two, R.drawable.weight};
 
     Imageadapter(Context context) {
         mContext = context;

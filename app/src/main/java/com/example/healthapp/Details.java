@@ -2,6 +2,7 @@ package com.example.healthapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,13 +16,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -42,12 +36,13 @@ public class Details extends AppCompatActivity {
     static final String KEY_WEIGHT = "Weight";
     static final String KEY_HEIGHT = "Height";
 
+    ConstraintLayout a, b;
     EditText gender;
     EditText age;
     EditText weight;
      EditText height;
      TextView userdetails;
-     Button add;
+     Button add, upd;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference USER_DETAILS = db.document("User Details/details");//firestore details
 
@@ -99,10 +94,13 @@ public class Details extends AppCompatActivity {
         weight = findViewById(R.id.EtWeight);
         height = findViewById(R.id.EtHeight);
         userdetails = findViewById(R.id.Udetails);
-        add = findViewById(R.id.btnAdd2);
+        add = findViewById(R.id.change);
+        upd = findViewById(R.id.update);
         fStore = FirebaseFirestore.getInstance();
         fireAuth = FirebaseAuth.getInstance();
         uid = fireAuth.getCurrentUser().getUid();
+        a = findViewById(R.id.one);
+        b = findViewById(R.id.two);
     }
 
         @Override
@@ -124,6 +122,9 @@ public class Details extends AppCompatActivity {
         }
     //on add detail click
     public void Save(View v){
+
+
+
         String Gender = gender.getText().toString();
         String Age = age.getText().toString();
         String Weight = weight.getText().toString();
@@ -140,6 +141,8 @@ public class Details extends AppCompatActivity {
          @Override
          public void onSuccess(Void aVoid) {
              Toast.makeText(Details.this, "Details Saved", Toast.LENGTH_SHORT).show();
+             b.setVisibility(View.INVISIBLE);
+             a.setVisibility(View.VISIBLE);
          }
      })
                 .addOnFailureListener(new OnFailureListener() {
@@ -149,6 +152,13 @@ public class Details extends AppCompatActivity {
                      //   Log.d(TAG, e.toString()); //probably delete this if not needed!!?!!??!?!@@@@@@@
                     }
                 });
+        upd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b.setVisibility(View.VISIBLE);
+                a.setVisibility(View.INVISIBLE);
+            }
+        });
 //to display info for a user
         //get user data
       //  USER_DETAILS.get()
