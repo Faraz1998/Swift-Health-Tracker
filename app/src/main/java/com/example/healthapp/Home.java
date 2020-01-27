@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -20,6 +21,7 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         vp = findViewById(R.id.SShow);
         Imageadapter adapter = new Imageadapter(this);
@@ -54,7 +56,7 @@ public class Home extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
 
-                    case R.id.n_text:
+                    case R.id.Notes:
                         startActivity(new Intent(getApplicationContext(), Notes.class));
                         overridePendingTransition(0, 0);
                         return true;}

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,11 +24,13 @@ public class Account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         loggedinas = findViewById(R.id.email);
         FAuth = FirebaseAuth.getInstance();
         FUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        loggedinas.setText(FUser.getEmail());//display user's email they are logged in with.
+        loggedinas.setText("Logged in as: " + FUser.getEmail());//display user's email they are logged in with.
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -56,7 +59,7 @@ public class Account extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
 
-                    case R.id.n_text:
+                    case R.id.Notes:
                         startActivity(new Intent(getApplicationContext(), Notes.class));
                         overridePendingTransition(0, 0);
                         return true;

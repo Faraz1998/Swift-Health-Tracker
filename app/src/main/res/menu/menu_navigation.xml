@@ -9,7 +9,7 @@
         android:title="Details"
         android:icon="@drawable/ic_wc_black_24dp"/>
     <item
-        android:id="@+id/n_text"
+        android:id="@+id/Notes"
         android:title="Notes"
         android:icon="@drawable/ic_note_black_24dp"/>
     <item

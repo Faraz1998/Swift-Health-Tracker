@@ -37,6 +37,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:onClick="updatee"
+            android:background="@drawable/buttons"
             android:text="Update Details"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"

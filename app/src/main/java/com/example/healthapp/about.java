@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -15,6 +16,7 @@ public class about extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
                 BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -27,7 +29,7 @@ public class about extends AppCompatActivity {
                         {   case R.id.about:
                             return true;
 
-                            case R.id.n_text:
+                            case R.id.Notes:
                                 startActivity(new Intent(getApplicationContext(), Notes.class));
                                 overridePendingTransition(0, 0);
                                 return true;

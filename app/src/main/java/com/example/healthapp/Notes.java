@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,14 +46,15 @@ public class Notes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.n_text);
+        bottomNavigationView.setSelectedItemId(R.id.Notes);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.n_text:
+                    case R.id.Notes:
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), Home.class));
@@ -82,7 +84,7 @@ public class Notes extends AppCompatActivity {
         //container 2
         E = findViewById(R.id.edit);
         two = findViewById(R.id.C2);
-        N = findViewById(R.id.n_text);
+        N = findViewById(R.id.notesss);
 
         fStore = FirebaseFirestore.getInstance();
         fireAuth = FirebaseAuth.getInstance();

@@ -30,7 +30,7 @@ public class login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//MAKE SURE TO PUT THIS IN EVERY SCREEN!!:!!!:!!@£!£"%
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Email = findViewById(R.id.ETEmail);
         Password = findViewById(R.id.PWord);
