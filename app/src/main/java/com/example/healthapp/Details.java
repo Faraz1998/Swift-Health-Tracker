@@ -56,7 +56,6 @@ public class Details extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
         bottomNavigationView.setSelectedItemId(R.id.details);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -81,7 +80,7 @@ public class Details extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
 
-                    case R.id.notes:
+                    case R.id.n_text:
                         startActivity(new Intent(getApplicationContext(), Notes.class));
                         overridePendingTransition(0, 0);
                         return true;}
@@ -115,16 +114,19 @@ public class Details extends AppCompatActivity {
                         String Weight = documentSnapshot.getString(KEY_WEIGHT);
                         String Height = documentSnapshot.getString(KEY_HEIGHT);
 
-                        userdetails.setText("Gender: " + Gender + "\n" + "Age: " + Age + "\n" + "Weight: " + Weight + "\n" + "Height: " + Height);
+                        userdetails.setText("Gender: " + Gender + "\n" + "Age: " + Age + "\n" + "Weight: " + Weight + " Stone" + "\n" + "Height: " + Height + " Cm");
                     }
                 }
             });
         }
-    //on add detail click
+    public void updatee(View v) {
+        a.setVisibility(View.INVISIBLE);
+        b.setVisibility(View.VISIBLE);
+    }
+
     public void Save(View v){
-
-
-
+        b.setVisibility(View.INVISIBLE);
+        a.setVisibility(View.VISIBLE);
         String Gender = gender.getText().toString();
         String Age = age.getText().toString();
         String Weight = weight.getText().toString();
@@ -138,27 +140,23 @@ public class Details extends AppCompatActivity {
 
         USER_DETAILS.set(details)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
-         @Override
-         public void onSuccess(Void aVoid) {
-             Toast.makeText(Details.this, "Details Saved", Toast.LENGTH_SHORT).show();
-             b.setVisibility(View.INVISIBLE);
-             a.setVisibility(View.VISIBLE);
-         }
-     })
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(Details.this, "Details Saved", Toast.LENGTH_SHORT).show();
+
+                    }
+                })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(Details.this, "Failed to save details", Toast.LENGTH_SHORT).show();
-                     //   Log.d(TAG, e.toString()); //probably delete this if not needed!!?!!??!?!@@@@@@@
+                        //   Log.d(TAG, e.toString()); //probably delete this if not needed!!?!!??!?!@@@@@@@
                     }
                 });
-        upd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                b.setVisibility(View.VISIBLE);
-                a.setVisibility(View.INVISIBLE);
-            }
-        });
+    }
+}
+
+
 //to display info for a user
         //get user data
       //  USER_DETAILS.get()
@@ -179,5 +177,5 @@ public class Details extends AppCompatActivity {
           //              }
             //        }
               //  });
-    }}
+
 

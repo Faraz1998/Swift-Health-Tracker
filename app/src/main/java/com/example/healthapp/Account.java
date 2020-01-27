@@ -56,7 +56,7 @@ public class Account extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
 
-                    case R.id.notes:
+                    case R.id.n_text:
                         startActivity(new Intent(getApplicationContext(), Notes.class));
                         overridePendingTransition(0, 0);
                         return true;
