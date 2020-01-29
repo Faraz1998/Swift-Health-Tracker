@@ -149,38 +149,15 @@ public class Details extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(Details.this, "Details Saved", Toast.LENGTH_SHORT).show();
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(Details.this, "Failed to save details", Toast.LENGTH_SHORT).show();
-                        //   Log.d(TAG, e.toString()); //probably delete this if not needed!!?!!??!?!@@@@@@@
                     }
                 });
     }
 }
-
-
-//to display info for a specific logged in user
-
-//        get user data
-//        USER_DETAILS.get()
-//                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                    @Override
-//                    public void onSuccess(DocumentSnapshot documentSnapshot){
-//                        if (documentSnapshot.exists()){
-//                            String Gender = documentSnapshot.getString(KEY_GENDER);
-//                            String Age = documentSnapshot.getString(KEY_AGE);
-//                            String Weight = documentSnapshot.getString(KEY_WEIGHT);
-//                            String Height = documentSnapshot.getString(KEY_HEIGHT);
-//                            userdetails.setText("Gender: " + Gender + "\n" + "Age: " + Age + "\n" + "Weight: " + Weight + "\n" + "Height: " + Height);
-//                            startActivity(new Intent(getApplicationContext(),displaydetails.class));
-//                        } else{
-//                            Toast.makeText(Details.this, "dont exist ", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
 
 

@@ -8,7 +8,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 public class Imageadapter extends PagerAdapter {
     private Context mContext;
-    private int[] mImageIds = new int[]{R.drawable.on, R.drawable.two, R.drawable.thre};
+    private int[] mImageIds = new int[]{R.drawable.on, R.drawable.two, R.drawable.thre};//images to be displayed
 
     Imageadapter(Context context) {
         mContext = context;
@@ -32,9 +32,8 @@ public class Imageadapter extends PagerAdapter {
         container.addView(imageView, 0);
         return imageView;
     }
-
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public void destroyItem(ViewGroup container, int position, Object object) { //used for when image transitions to next, essentially 'destroying it'
         container.removeView((ImageView) object);
     }
 }

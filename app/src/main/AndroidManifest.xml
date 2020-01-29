@@ -20,7 +20,6 @@
         <activity android:name=".about" />
         <activity android:name=".Home" />
         <activity android:name=".Account" />
-        <activity android:name=".displaydetails" />
         <activity android:name=".Details" />
         <activity android:name=".Register" />
         <activity android:name=".login">
