@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,12 +31,13 @@ import javax.annotation.Nullable;
 
 public class Details extends AppCompatActivity {
 
-    //constants (key for values)
+    //constants
     static final String TAG = "Details";
     static final String KEY_GENDER = "Gender";
     static final String KEY_AGE = "Age";
     static final String KEY_WEIGHT = "Weight";
     static final String KEY_HEIGHT = "Height";
+
 
     ConstraintLayout a, b;
     EditText gender;
@@ -46,11 +48,11 @@ public class Details extends AppCompatActivity {
      Button add, upd;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference USER_DETAILS = db.document("User Details/details");//firestore details
-
     String uid;
     FirebaseAuth fireAuth;
     FirebaseFirestore fStore;
 
+    //switching activities through bottom navigation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +106,7 @@ public class Details extends AppCompatActivity {
         b = findViewById(R.id.two);
     }
 
+    //calls the information from the database and displays it on the screen for users.
         @Override
         protected void onStart() {
             super.onStart();
@@ -115,7 +118,6 @@ public class Details extends AppCompatActivity {
                         String Age = documentSnapshot.getString(KEY_AGE);
                         String Weight = documentSnapshot.getString(KEY_WEIGHT);
                         String Height = documentSnapshot.getString(KEY_HEIGHT);
-
                         userdetails.setText("Gender: " + Gender + "\n" + "Age: " + Age + "\n" + "Weight: " + Weight + " Stone" + "\n" + "Height: " + Height + " Cm");
                     }
                 }
@@ -129,11 +131,13 @@ public class Details extends AppCompatActivity {
     public void Save(View v){
         b.setVisibility(View.INVISIBLE);
         a.setVisibility(View.VISIBLE);
+        //converts the user input into a string
         String Gender = gender.getText().toString();
         String Age = age.getText().toString();
         String Weight = weight.getText().toString();
         String Height = height.getText().toString();
 
+        //stores information in database
         Map<String, Object> details = new HashMap<>();
         details.put(KEY_GENDER, Gender);
         details.put(KEY_AGE, Age);
@@ -159,25 +163,24 @@ public class Details extends AppCompatActivity {
 }
 
 
-//to display info for a user
-        //get user data
-      //  USER_DETAILS.get()
-        //        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-        //            @Override
-      //              public void onSuccess(DocumentSnapshot documentSnapshot){
-          //              if (documentSnapshot.exists()){
-            //                String Gender = documentSnapshot.getString(KEY_GENDER);
-              //            String Age = documentSnapshot.getString(KEY_AGE);
-               //             String Weight = documentSnapshot.getString(KEY_WEIGHT);
-               //             String Height = documentSnapshot.getString(KEY_HEIGHT);
+//to display info for a specific logged in user
 
-  //                          userdetails.setText("Gender: " + Gender + "\n" + "Age: " + Age + "\n" + "Weight: " + Weight + "\n" + "Height: " + Height);
-  //                          startActivity(new Intent(getApplicationContext(),displaydetails.class));
-    //                        //maybe delete thiss!!!!"£!"
-      //                  } else{
-        //                    Toast.makeText(Details.this, "dont extist ", Toast.LENGTH_SHORT).show();
-          //              }
-            //        }
-              //  });
+//        get user data
+//        USER_DETAILS.get()
+//                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onSuccess(DocumentSnapshot documentSnapshot){
+//                        if (documentSnapshot.exists()){
+//                            String Gender = documentSnapshot.getString(KEY_GENDER);
+//                            String Age = documentSnapshot.getString(KEY_AGE);
+//                            String Weight = documentSnapshot.getString(KEY_WEIGHT);
+//                            String Height = documentSnapshot.getString(KEY_HEIGHT);
+//                            userdetails.setText("Gender: " + Gender + "\n" + "Age: " + Age + "\n" + "Weight: " + Weight + "\n" + "Height: " + Height);
+//                            startActivity(new Intent(getApplicationContext(),displaydetails.class));
+//                        } else{
+//                            Toast.makeText(Details.this, "dont exist ", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
 
 

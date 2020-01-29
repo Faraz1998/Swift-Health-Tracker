@@ -41,7 +41,7 @@ public class login extends AppCompatActivity {
         //if user closes app without logging out, this code allows them to continue with their session still logged in.
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user!=null){
-            startActivity(new Intent(getApplicationContext(),Details.class));
+            startActivity(new Intent(getApplicationContext(),Home.class));
             this.finish();
         }
 
